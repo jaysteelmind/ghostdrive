@@ -1,0 +1,1 @@
+Portions of this data was taken from Wikipedia, WikiHow, and WikiBooks, under their respective Creative Commons Attribution-ShareAlike 3.0 licenses.

@@ -1,0 +1,30 @@
+# GhostDrive Linux - Requirements
+# Generated: 2026-01-04
+# Purpose: Minimal production dependencies for Linux port
+
+# GUI Framework
+PySide6>=6.5.0
+
+# LLM Inference Engine
+llama-cpp-python>=0.2.50
+
+# Encryption (Fernet/AES-128)
+cryptography>=41.0.0
+
+# Configuration
+PyYAML>=6.0
+
+# System Utilities
+psutil>=5.9.0
+
+# Clipboard Operations
+pyperclip>=1.8.0
+
+# Network/Download (for model fetching)
+requests>=2.31.0
+
+# Progress Display
+tqdm>=4.65.0
+
+# Image Handling
+Pillow>=10.0.0

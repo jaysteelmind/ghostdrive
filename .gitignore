@@ -1,0 +1,31 @@
+# Virtual environment
+venv_ui/
+
+# AI Model (downloaded during install)
+Everything_else/models/*.gguf
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# User data (encrypted)
+Everything_else/vault/*.enc
+Everything_else/vault/*.bin
+Everything_else/projects/*.enc
+Everything_else/inventory/*.enc
+Everything_else/journal/*.enc
+Everything_else/user_creds/
+
+# OS files
+.DS_Store
+Thumbs.db
+lost+found/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

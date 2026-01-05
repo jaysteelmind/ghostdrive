@@ -1,7 +1,7 @@
 #!/bin/bash
 # ==============================================================================
 # GhostDrive Linux Installer
-# Version: 1.0.0
+# Version: 1.1.0
 # Created: 2026-01-04
 # Purpose: Create isolated Python environment and install dependencies
 # ==============================================================================
@@ -60,6 +60,27 @@ check_requirements_file() {
     log_info "Requirements file found."
 }
 
+check_system_dependencies() {
+    log_info "Checking system dependencies..."
+    
+    MISSING_DEPS=""
+    
+    if command -v dpkg &> /dev/null; then
+        dpkg -l libxcb-cursor0 >/dev/null 2>&1 || MISSING_DEPS="${MISSING_DEPS} libxcb-cursor0"
+        dpkg -l libxcb-xinerama0 >/dev/null 2>&1 || MISSING_DEPS="${MISSING_DEPS} libxcb-xinerama0"
+        
+        if [ -n "${MISSING_DEPS}" ]; then
+            log_error "Missing system dependencies:${MISSING_DEPS}"
+            log_info "Install with: sudo apt install${MISSING_DEPS}"
+            exit 1
+        fi
+        
+        log_info "System dependencies OK."
+    else
+        log_info "Skipping dpkg check (not Debian-based)."
+    fi
+}
+
 remove_existing_venv() {
     if [ -d "${VENV_DIR}" ]; then
         log_info "Removing existing virtual environment..."
@@ -82,9 +103,7 @@ create_virtual_environment() {
 
 upgrade_pip() {
     log_info "Upgrading pip..."
-    
     "${VENV_DIR}/bin/python" -m pip install --upgrade pip --quiet
-    
     log_info "Pip upgraded."
 }
 

@@ -144,6 +144,7 @@ main() {
     
     check_python_version
     check_requirements_file
+    check_system_dependencies
     remove_existing_venv
     create_virtual_environment
     upgrade_pip
